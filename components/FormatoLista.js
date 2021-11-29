@@ -1,15 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableWithoutFeedback} from 'react-native';
+import { NativeScreenNavigationContainer } from 'react-native-screens';
 
-const FormatoLista = ({cripto}) => {
+const FormatoLista = ({cripto, navigation, route}) => {
 
     console.log(cripto)
-
+if (cripto.DISPLAY.USD)
     return(
 
+        <TouchableWithoutFeedback
+        
+        onPress={()=>navigation.navigate('Detalle', {cripto})} >
         <View style={styles.view}>
 
-        <View style={styles.image}>
+            <View style={styles.image}>
             <Image 
                 style = {styles.image_pic}
                 source = {{uri:`http://www.cryptocompare.com${cripto.CoinInfo.ImageUrl}`}}
@@ -19,22 +23,30 @@ const FormatoLista = ({cripto}) => {
 
             <View style={styles.text}>
 
+            <View>
             <Text style={styles.name}>{cripto.CoinInfo.FullName}</Text>
+            </View>
+            
+            
 
             <View style={styles.change}>
 
-            <Text> {cripto.DISPLAY.USD.CHANGEPCT24HOUR}% ({cripto.DISPLAY.USD.CHANGE24HOUR})</Text>
-            {/* <Text>{cripto.DISPLAY.USD.CHANGE24HOUR}</Text> */}
+            <Text> {Math.round(cripto.RAW.USD.CHANGEPCT24HOUR*10)/10}% (${Math.round(cripto.RAW.USD.CHANGE24HOUR*100)/100})</Text>
+         
             </View>
 
             </View>
 
             
-            <Text style={styles.price}>{cripto.DISPLAY.USD.PRICE}</Text>
+            <Text style={styles.price}>${Math.round(cripto.RAW.USD.PRICE*100)/100}  </Text>
             
   
         </View>
+
+        </TouchableWithoutFeedback>
     )
+
+    else {'continue'}
 }
 
 export default FormatoLista;
@@ -43,8 +55,11 @@ const styles = StyleSheet.create({
 
     view:{
         flexDirection: 'row',
-        height: 100,
-        paddingVertical: 20,
+        height: 90,
+        paddingVertical: 10,
+        marginHorizontal: 10,
+
+        borderRadius: 10,
         
 
         backgroundColor: 'white',
@@ -60,19 +75,26 @@ shadowOpacity: 0.32,
 shadowRadius: 5.46,
 
 elevation: 9,
+
+
     
     },
 
     text:{
         width:'50%',
         textAlign:'left',
-        paddingLeft: 7.5
+        paddingLeft: 5,
+        justifyContent: 'center',
+        textAlignVertical: 'center',
+
+        //backgroundColor: 'blue'
     },
 
     name:{
         color: '#2C272E',
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        //backgroundColor: 'green'
     },
 
     change:{
@@ -82,25 +104,32 @@ elevation: 9,
 
     image:{
         width: '15%',
-        height: '100%'
-        //height: 20,
+        height: '100%',
+       
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        //backgroundColor: 'red'
       },
       
       image_pic:{
-        paddingHorizontal: 0,
         
-        width: '100%',
-        height: '100%',
+        width: '70%',
+        height: '70%',
       },
 
 
       price:{
+          flex:1,
           fontSize: 22,
           color: "darkgrey",
-          textAlign: 'center',
+          textAlign: 'right',
+          justifyContent: 'center',
+          alignItems: 'center',
           textAlignVertical: 'center',
-          
-          width: '35%'
+          width: '35%',
+
+          //backgroundColor: 'orange'
       }
 
 })

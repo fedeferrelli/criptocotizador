@@ -3,14 +3,19 @@ import React, {useState, useEffect} from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 
-const Header = () => {
+const Detail = ({navigation, route}) => {
+
+    const cripto = route.params.cripto;
+    
+    console.log(cripto)
     return(
         <View style={styles.view}> 
-            <Text style={styles.text}>Criptocotizador</Text>
+            <Text style={styles.text}>{cripto.CoinInfo.FullName} </Text>
         </View>
-    )
+    );
+
 };
-export default Header;
+export default Detail;
 
 const styles = StyleSheet.create({
     view:{
@@ -31,4 +36,3 @@ const styles = StyleSheet.create({
     }
 })
    
-

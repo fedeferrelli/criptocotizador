@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import FormatoLista from './FormatoLista';
 
-const Mostrar = ({criptomonedas}) => {
+const Mostrar = ({criptomonedas, navigation}) => {
 
     
     if(criptomonedas.length>1)
@@ -20,6 +20,7 @@ const Mostrar = ({criptomonedas}) => {
 
                     <FormatoLista
                         cripto={item}
+                        navigation={navigation}
                     />    
 
                     /* <View>

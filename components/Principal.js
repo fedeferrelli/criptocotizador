@@ -4,15 +4,13 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import axios from 'axios';
 
-import Mostrar from './components/Mostrar';
-import Header from './components/Header'
-import Principal from './components/Principal';
-import Navigation from './components/Navigation';
+import Mostrar from './Mostrar';
+/* import Header from './Header' */
 
 
-const App = () => {  
+const Principal = ({navigation}) => {  
 
- /*  const [ criptomonedas, guardarCriptomonedas ] = useState([
+  const [ criptomonedas, guardarCriptomonedas ] = useState([
 
   useEffect(() => {
     const consultarAPI = async () => {
@@ -34,9 +32,10 @@ console.log(criptomonedas[0])
   if (criptomonedas)
   return (
 <>
-   <Header/>
+   {/* <Header/> */}
    <Mostrar
-    criptomonedas={criptomonedas}/>
+    criptomonedas={criptomonedas}
+    navigation = {navigation}/>
 
 </>
   );
@@ -44,18 +43,10 @@ console.log(criptomonedas[0])
   else
   return(
     <Text>fede</Text>
-  ) */
-
-
-  return(
-
-   
-    <Navigation/>
-
   )
 };
 
-export default App;
+export default Principal;
 
 const styles = StyleSheet.create({
   container: {
