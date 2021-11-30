@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, Image, TouchableWithoutFeedback} from 'react-native';
-import { NativeScreenNavigationContainer } from 'react-native-screens';
+import {View, Text, StyleSheet, Image, TouchableNativeFeedback, TouchableHighlight} from 'react-native';
 
-const FormatoLista = ({cripto, navigation, route}) => {
+
+const FormatoLista = ({cripto, navigation}) => {
 
     console.log(cripto)
 if (cripto.DISPLAY.USD)
     return(
 
-        <TouchableWithoutFeedback
+        <TouchableNativeFeedback      /* TouchableNativeFeedback */
         
         onPress={()=>navigation.navigate('Detalle', {cripto})} >
         <View style={styles.view}>
@@ -43,7 +43,7 @@ if (cripto.DISPLAY.USD)
   
         </View>
 
-        </TouchableWithoutFeedback>
+        </TouchableNativeFeedback>   /*  */
     )
 
     else {'continue'}
@@ -67,14 +67,14 @@ const styles = StyleSheet.create({
         marginVertical: 4,
         shadowColor: "#000",
         textAlignVertical: 'center',
-shadowOffset: {
-	width: 0,
-	height: 4,
-},
-shadowOpacity: 0.32,
-shadowRadius: 5.46,
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.32,
+        shadowRadius: 5.46,
 
-elevation: 9,
+        elevation: 9,
 
 
     
