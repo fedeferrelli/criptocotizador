@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     view:{
         width: '100%',       
         textAlign: 'center',
+       // backgroundColor: '#7267CB'
 
     }, 
 

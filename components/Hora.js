@@ -11,7 +11,11 @@ const Hora = ({cripto}) => {
 		
 
 		<View style={styles.detail}>
-			<Text style={styles.leftText}>Variación: {cripto.DISPLAY.USD.CHANGEPCTHOUR}% ({cripto.DISPLAY.USD.CHANGEHOUR})</Text>
+			<Text style={styles.leftText}>
+				Variación: 
+					<Text style={[cripto.DISPLAY.USD.CHANGEPCTHOUR<0 ? styles.negative : styles.noNegative]}> {cripto.DISPLAY.USD.CHANGEPCTHOUR}%</Text> 
+				({cripto.DISPLAY.USD.CHANGEHOUR})
+			</Text>
 		</View>
 
 		<View style={styles.detail}>
@@ -89,6 +93,17 @@ paddingBottom: 10
 
 	rightText:{
 		width:'50%',
-		textAlign: 'left'}
+		textAlign: 'left'
+	},
+
+	negative:{
+		color:'red',
+		fontWeight:'bold'
+	},
+
+	noNegative:{
+		color:'green',
+		fontWeight:'bold'
+	}
 
 })

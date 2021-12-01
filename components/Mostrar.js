@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, ActivityIndicator, StyleSheet, FlatList} from 'react-native';
 import FormatoLista from './FormatoLista';
 
 const Mostrar = ({criptomonedas, navigation}) => {
@@ -22,16 +22,6 @@ const Mostrar = ({criptomonedas, navigation}) => {
                         cripto={item}
                         navigation={navigation}
                     />    
-
-                    /* <View>
-                        <Text>{item.CoinInfo.FullName}</Text>
-                        <Text>{item.CoinInfo.FullName}</Text>
-                    </View> */
-                
-                
-                    
-                
-                
                 }
                    
                     keyExtractor={item => item.CoinInfo.Id}
@@ -41,7 +31,9 @@ const Mostrar = ({criptomonedas, navigation}) => {
 
     else
     return(
-        <Text>esperando</Text>
+        <View style={styles.container}>
+            <ActivityIndicator size="large" color="#000" />
+        </View>
     )
 };
 
@@ -53,13 +45,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center', 
         textAlign: 'center',
-        alignContent: 'center'
-       
+        alignContent: 'center',
+        marginTop: 10,  
     },
 
-    flatList:{
-        //paddingHorizontal: 10
-   
-    }
+    container: {
+        flex: 1,
+        justifyContent: "center"
+      },
 
 })

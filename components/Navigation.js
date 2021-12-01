@@ -14,19 +14,33 @@ const Stack = createNativeStackNavigator();
 function Navigation() {
   return (
 
-    <NavigationContainer>
+    <NavigationContainer >
 
-      <Stack.Navigator initialRouteName="Principal">
+      <Stack.Navigator 
+        initialRouteName="Principal"
+        >
         <Stack.Screen 
             name="Principal" 
             component={Principal}
-            options={{ title: 'Criptocotizador' }} />
+            options={{ title: 'Criptocotizador',headerTitleAlign: 'center',
+            headerTintColor: '#000',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+             }} />
 
 
         <Stack.Screen 
             name="Detalle" 
             component={Detail}
-            options={{ title: 'Detalle' }} />
+            options={{
+              title: 'Detalle',
+              headerTitleAlign: 'center',
+              headerTintColor: '#000',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }} />
 
 
       </Stack.Navigator>

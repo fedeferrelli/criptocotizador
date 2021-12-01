@@ -31,7 +31,9 @@ if (cripto.DISPLAY.USD)
 
             <View style={styles.change}>
 
-            <Text> {Math.round(cripto.RAW.USD.CHANGEPCT24HOUR*10)/10}% (${Math.round(cripto.RAW.USD.CHANGE24HOUR*100)/100})</Text>
+            <Text
+            style={cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? {color:'red', fontWeight:'bold'} : {color:'green', fontWeight:'bold'}}
+            > {cripto.DISPLAY.USD.CHANGEPCTDAY}% </Text>
          
             </View>
 
@@ -43,7 +45,7 @@ if (cripto.DISPLAY.USD)
   
         </View>
 
-        </TouchableNativeFeedback>   /*  */
+        </TouchableNativeFeedback>
     )
 
     else {'continue'}
@@ -122,12 +124,13 @@ const styles = StyleSheet.create({
       price:{
           flex:1,
           fontSize: 22,
-          color: "darkgrey",
+          color: "grey",
           textAlign: 'right',
           justifyContent: 'center',
           alignItems: 'center',
           textAlignVertical: 'center',
           width: '35%',
+          fontWeight: 'bold'
 
           //backgroundColor: 'orange'
       }

@@ -11,34 +11,32 @@ const Diario = ({cripto}) => {
 		
 
 		<View style={styles.detail}>
-			<Text style={styles.leftText}>Variación: {cripto.DISPLAY.USD.CHANGEPCTDAY}% ({cripto.DISPLAY.USD.CHANGEDAY})</Text>
-		{/* <Text style={styles.rightText}>{cripto.DISPLAY.USD.CHANGEPCTDAY}% ({cripto.DISPLAY.USD.CHANGEDAY})</Text> */}
+			<Text style={styles.leftText}>
+				Variación: 
+					<Text style={[cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? styles.negative : styles.noNegative]}> {cripto.DISPLAY.USD.CHANGEPCTDAY}% 
+					</Text> ({cripto.DISPLAY.USD.CHANGEDAY})
+			</Text>
 		</View>
 
 		<View style={styles.detail}>
-			<Text style={styles.leftText}>Precio Apertura: {cripto.DISPLAY.USD.OPENDAY}</Text>
-			{/* <Text style={styles.rightText}>{cripto.DISPLAY.USD.OPENDAY}</Text> */}
+			<Text style={styles.leftText}>Precio Apertura: {cripto.DISPLAY.USD.OPENDAY}</Text>	
 		</View>
 
 		<View style={styles.detail}>
-			<Text style={styles.leftText}>Precio Máximo: {cripto.DISPLAY.USD.HIGHDAY}</Text>
-			{/* <Text style={styles.rightText}>{cripto.DISPLAY.USD.HIGHDAY}</Text> */}
+			<Text style={styles.leftText}>Precio Máximo: {cripto.DISPLAY.USD.HIGHDAY}</Text>	
 		</View>
 
 
 		<View style={styles.detail}>
-			<Text style={styles.leftText}>Precio Mínimo: {cripto.DISPLAY.USD.LOWDAY}</Text>
-			{/* <Text style={styles.rightText}>{cripto.DISPLAY.USD.LOWDAY}</Text> */}
+			<Text style={styles.leftText}>Precio Mínimo: {cripto.DISPLAY.USD.LOWDAY}</Text>		
 		</View>
 
 		<View style={styles.detail}>
-			<Text style={styles.leftText}>Volumen: {cripto.DISPLAY.USD.VOLUMEDAY}</Text>
-			{/* <Text style={styles.rightText}>{cripto.DISPLAY.USD.VOLUMEDAY}</Text> */}
+			<Text style={styles.leftText}>Volumen: {cripto.DISPLAY.USD.VOLUMEDAY}</Text>		
 		</View>
 
 		<View style={styles.detail}>
 			<Text style={styles.leftText}>Volumen: {cripto.DISPLAY.USD.VOLUMEDAYTO}</Text>
-			{/* <Text style={styles.rightText}>{cripto.DISPLAY.USD.VOLUMEDAYTO}</Text> */}
 		</View>
 
 
@@ -95,6 +93,17 @@ paddingBottom: 10
 
 	rightText:{
 		width:'50%',
-		textAlign: 'left'}
+		textAlign: 'left'
+	},
+
+	negative:{
+		color:'red',
+		fontWeight:'bold'
+	},
+
+	noNegative:{
+		color:'green',
+		fontWeight:'bold'
+	}
 
 })
