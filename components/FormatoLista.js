@@ -1,16 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableNativeFeedback, TouchableHighlight} from 'react-native';
 
 
 const FormatoLista = ({cripto, navigation}) => {
 
-    console.log(cripto)
 if (cripto.DISPLAY.USD)
     return(
 
-        <TouchableNativeFeedback      /* TouchableNativeFeedback */
-        
+        <TouchableNativeFeedback 
         onPress={()=>navigation.navigate('Detalle', {cripto})} >
+            
         <View style={styles.view}>
 
             <View style={styles.image}>
@@ -40,7 +39,7 @@ if (cripto.DISPLAY.USD)
             </View>
 
             
-            <Text style={styles.price}>${Math.round(cripto.RAW.USD.PRICE*100)/100}  </Text>
+            <Text style={styles.price}>{cripto.DISPLAY.USD.PRICE}  {/* ${Math.round(cripto.RAW.USD.PRICE*100)/100} */}  </Text>
             
   
         </View>
@@ -83,20 +82,17 @@ const styles = StyleSheet.create({
     },
 
     text:{
-        width:'50%',
+        width:'45%',
         textAlign:'left',
         paddingLeft: 5,
         justifyContent: 'center',
         textAlignVertical: 'center',
-
-        //backgroundColor: 'blue'
     },
 
     name:{
         color: '#2C272E',
         fontSize: 20,
         fontWeight: 'bold',
-        //backgroundColor: 'green'
     },
 
     change:{
@@ -110,8 +106,6 @@ const styles = StyleSheet.create({
        
         justifyContent: 'center',
         alignItems: 'center',
-
-        //backgroundColor: 'red'
       },
       
       image_pic:{
@@ -123,16 +117,13 @@ const styles = StyleSheet.create({
 
       price:{
           flex:1,
-          fontSize: 22,
-          color: "grey",
+          fontSize: 19,
           textAlign: 'right',
           justifyContent: 'center',
           alignItems: 'center',
           textAlignVertical: 'center',
-          width: '35%',
-          fontWeight: 'bold'
-
-          //backgroundColor: 'orange'
+          width: '40%',
+         // fontWeight: 'bold',
       }
 
 })

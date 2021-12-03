@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
 import { ScrollView, Text, StyleSheet, Image } from 'react-native';
 
@@ -11,8 +11,7 @@ import UltimaOperacion from './UltimaOperacion';
 const Detail = ({navigation, route}) => {
 
     const cripto = route.params.cripto;
-    
-    console.log(cripto)
+
     return(
        
         <ScrollView 
@@ -47,13 +46,10 @@ const styles = StyleSheet.create({
     view:{
         width: '100%',       
         textAlign: 'center',
-       // backgroundColor: '#7267CB'
-
     }, 
 
     text:{
         fontSize: 20,
-        //color: '#fff',
         width: '100%',
         textAlign:'center',
         marginBottom: 20
@@ -66,9 +62,7 @@ const styles = StyleSheet.create({
 
       encabezado:{
           textAlign: 'center',
-        //flex:1,
-        marginTop: 250,
-        //height: 500,  
+        marginTop: 250, 
         width:'90%',
         
       }

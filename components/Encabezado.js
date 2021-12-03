@@ -40,19 +40,11 @@ const Encabezado = ({cripto}) => {
 					<Text style={styles.leftText}>Capitalización: {cripto.DISPLAY.USD.MKTCAP}</Text>
 				</View>
 
-
 			</View>
-
-
 
 		</View>
 
-
-)
-
-
-
-};
+)};
 
 export default Encabezado;
 

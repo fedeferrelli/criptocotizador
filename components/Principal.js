@@ -1,16 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import axios from 'axios';
 
 import Mostrar from './Mostrar';
-/* import Header from './Header' */
+
 
 
 const Principal = ({navigation}) => {  
 
-  const [ criptomonedas, guardarCriptomonedas ] = useState([
+  const [ criptomonedas, guardarCriptomonedas ] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+
+  const [refreshing, setRefreshing] = useState(false)
 
   useEffect(() => {
     const consultarAPI = async () => {
@@ -19,31 +22,25 @@ const Principal = ({navigation}) => {
         guardarCriptomonedas(resultado.data.Data);
     }
     consultarAPI();
-}, [])
-])
+    //setRefresh(false)
+    setRefreshing(false)
+}, [refresh])
 
 
-if (criptomonedas.length>0){
-  const [data, setdata] = useState({criptomonedas})}
-
-console.log(criptomonedas[0])
-
-
-  if (criptomonedas)
   return (
 <>
-   {/* <Header/> */}
+   
    <Mostrar
     criptomonedas={criptomonedas}
-    navigation = {navigation}/>
+    navigation = {navigation}
+    refresh={refresh}
+    setRefresh={setRefresh}
+    refreshing={refreshing}
+    setRefreshing={setRefreshing}/>
 
 </>
   );
 
-  else
-  return(
-    <Text>fede</Text>
-  )
 };
 
 export default Principal;

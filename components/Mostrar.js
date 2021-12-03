@@ -1,19 +1,33 @@
 import React, {useState, useEffect} from 'react';
-import {View, ActivityIndicator, StyleSheet, FlatList} from 'react-native';
+import {ScrollView, View, ActivityIndicator, StyleSheet, FlatList, RefreshControl} from 'react-native';
 import FormatoLista from './FormatoLista';
 
-const Mostrar = ({criptomonedas, navigation}) => {
+const Mostrar = ({criptomonedas, navigation, refresh, setRefresh, refreshing, setRefreshing}) => {
 
+   // const [refreshing, setRefreshing] = useState(false)
     
+    const onRefresh =() =>{
+        setRefreshing(true)
+        setRefresh(!refresh)
+       // setTimeout(function(){ setRefreshing(false); }, 800); 
+
+        
+    }
+
     if(criptomonedas.length>1)
 
     return(
 
-       
         <View style={styles.view}>
 
 
                  {<FlatList
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={refreshing}
+                            onRefresh={onRefresh}
+                        />
+                 } 
                  contentContainerStyle = {styles.flatList}
                     data={criptomonedas}
                     renderItem={({item}) =>
@@ -27,6 +41,7 @@ const Mostrar = ({criptomonedas, navigation}) => {
                     keyExtractor={item => item.CoinInfo.Id}
                     />}
         </View>
+        
     );
 
     else
