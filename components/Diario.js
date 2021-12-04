@@ -1,7 +1,13 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+import {Icon} from 'react-native-elements';
 
 const Diario = ({cripto}) => {
+
+	const [showDiario, setShowDiario] = useState(false)
+
+
+	if (showDiario){
 
 	return(
 		
@@ -39,8 +45,43 @@ const Diario = ({cripto}) => {
 			<Text style={styles.leftText}>Volumen: {cripto.DISPLAY.USD.VOLUMEDAYTO}</Text>
 		</View>
 
+		<Pressable onPress={()=>setShowDiario(!showDiario)}>
+			<Icon
+			type='material-community'
+			name='chevron-up'
+			underlayColor='#517fa4'
+			/>
+		</Pressable>
 
 		</View>
+
+
+	)}
+
+	else return(
+		<View style={styles.view}>
+			
+		<Text style={styles.title}>Datos del día</Text>
+		
+
+		<View style={styles.detail}>
+			<Text style={styles.leftText}>
+				Variación: 
+					<Text style={[cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? styles.negative : styles.noNegative]}> {cripto.DISPLAY.USD.CHANGEPCTDAY}% 
+					</Text> ({cripto.DISPLAY.USD.CHANGEDAY})
+			</Text>
+		</View>
+
+		<Pressable onPress={()=>setShowDiario(!showDiario)}>
+		
+			<Icon
+			type='material-community'
+			name='chevron-down'
+			/>
+		</Pressable>
+
+		</View>
+
 
 	)
 

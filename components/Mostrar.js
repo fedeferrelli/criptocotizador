@@ -21,7 +21,7 @@ const Mostrar = ({criptomonedas, navigation, refresh, setRefresh, refreshing, se
         <View style={styles.view}>
 
 
-                 {<FlatList
+                 <FlatList
                     refreshControl={
                         <RefreshControl
                             refreshing={refreshing}
@@ -31,7 +31,7 @@ const Mostrar = ({criptomonedas, navigation, refresh, setRefresh, refreshing, se
                  contentContainerStyle = {styles.flatList}
                     data={criptomonedas}
                     renderItem={({item}) =>
-
+                   
                     <FormatoLista
                         cripto={item}
                         navigation={navigation}
@@ -39,7 +39,8 @@ const Mostrar = ({criptomonedas, navigation, refresh, setRefresh, refreshing, se
                 }
                    
                     keyExtractor={item => item.CoinInfo.Id}
-                    />}
+              
+                    />
         </View>
         
     );

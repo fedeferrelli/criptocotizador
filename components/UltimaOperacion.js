@@ -1,8 +1,13 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+import {Icon} from 'react-native-elements';
 
 
 const UltimaOperacion = ({cripto}) => {
+
+	const [showUltimaOperacion, setShowUltimaOperacion] = useState(false)
+
+	if (showUltimaOperacion){
 
 	return(
 	
@@ -35,7 +40,33 @@ const UltimaOperacion = ({cripto}) => {
 				<Text style={styles.rightText}></Text>
 			</View>
 
+			<Pressable onPress={()=>setShowUltimaOperacion(!showUltimaOperacion)}>
+			<Icon
+			type='material-community'
+			name='chevron-up'
+			/>
+			</Pressable>
+
 		</View>
+
+	)}
+
+	else return(
+
+		<View style={styles.view}>
+
+		<Text style={styles.title}>Ultima Transacción</Text>
+
+
+		<Pressable onPress={()=>setShowUltimaOperacion(!showUltimaOperacion)}>
+			<Icon
+			type='material-community'
+			name='chevron-down'
+			/>
+		</Pressable>
+
+	</View>
+
 
 	)
 

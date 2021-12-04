@@ -4,7 +4,8 @@ import {View, Text, StyleSheet, Image, TouchableNativeFeedback, TouchableHighlig
 
 const FormatoLista = ({cripto, navigation}) => {
 
-if (cripto.DISPLAY.USD)
+
+        
     return(
 
         <TouchableNativeFeedback 
@@ -47,7 +48,7 @@ if (cripto.DISPLAY.USD)
         </TouchableNativeFeedback>
     )
 
-    else {'continue'}
+
 }
 
 export default FormatoLista;
