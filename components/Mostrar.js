@@ -4,7 +4,23 @@ import FormatoLista from './FormatoLista';
 
 const Mostrar = ({criptomonedas, navigation, refresh, setRefresh, refreshing, setRefreshing}) => {
 
-   // const [refreshing, setRefreshing] = useState(false)
+  /*  const [newData, setNewData] = useState([])
+
+   useEffect(() => {
+
+    criptomonedas.map(cripto=>{
+        console.log(cripto)
+        
+       if (cripto.hasOwnProperty('DISPLAY')){
+            newData.push(cripto)
+           // setNewData([...newData, cripto])
+        }
+
+    })
+    //setNewData([])
+   }, [criptomonedas]) */
+
+
     
     const onRefresh =() =>{
         setRefreshing(true)
@@ -21,7 +37,7 @@ const Mostrar = ({criptomonedas, navigation, refresh, setRefresh, refreshing, se
         <View style={styles.view}>
 
 
-                 <FlatList
+            <FlatList
                     refreshControl={
                         <RefreshControl
                             refreshing={refreshing}
@@ -41,6 +57,7 @@ const Mostrar = ({criptomonedas, navigation, refresh, setRefresh, refreshing, se
                     keyExtractor={item => item.CoinInfo.Id}
               
                     />
+
         </View>
         
     );

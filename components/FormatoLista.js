@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableNativeFeedback, TouchableHighlight} from 'react-native';
+import { Icon } from 'react-native-elements'
 
 
 const FormatoLista = ({cripto, navigation}) => {
@@ -17,10 +18,11 @@ const FormatoLista = ({cripto, navigation}) => {
             <Image 
                 style = {styles.image_pic}
                 source = {{uri:`http://www.cryptocompare.com${cripto.CoinInfo.ImageUrl}`}}
+                resizeMode='contain'
 
             />
             </View>
-
+ 
             <View style={styles.text}>
 
             <View>
@@ -31,16 +33,25 @@ const FormatoLista = ({cripto, navigation}) => {
 
             <View style={styles.change}>
 
+
             <Text
-            style={cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? {color:'red', fontWeight:'bold'} : {color:'green', fontWeight:'bold'}}
-            > {cripto.DISPLAY.USD.CHANGEPCTDAY}% </Text>
+            style={cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? {color:'red', fontWeight:'bold',  textAlignVertical:'center'} : cripto.DISPLAY.USD.CHANGEPCTDAY>0 ?  {color:'green', fontWeight:'bold',  textAlignVertical:'center'} : {fontWeight:'bold', textAlignVertical:'center'}}
+            >{cripto.DISPLAY.USD.CHANGEPCTDAY}%</Text>
+
+<View style={styles.icon}>
+                <Icon
+                type='material-community'
+                name= {cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? 'chevron-double-down' : cripto.DISPLAY.USD.CHANGEPCTDAY>0 ? 'chevron-double-up' : 'equal'}
+                color= {cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? 'red' : cripto.DISPLAY.USD.CHANGEPCTDAY>0 ?  'green' : 'black'}
+                />
+            </View>
          
             </View>
 
             </View>
 
             
-            <Text style={styles.price}>{cripto.DISPLAY.USD.PRICE}  {/* ${Math.round(cripto.RAW.USD.PRICE*100)/100} */}  </Text>
+            <Text style={styles.price}>{cripto.DISPLAY.USD.PRICE}</Text>
             
   
         </View>
@@ -57,15 +68,11 @@ const styles = StyleSheet.create({
 
     view:{
         flexDirection: 'row',
-        height: 90,
+        height: 80,
         paddingVertical: 10,
         marginHorizontal: 10,
-
         borderRadius: 10,
-        
-
         backgroundColor: 'white',
-
         marginVertical: 4,
         shadowColor: "#000",
         textAlignVertical: 'center',
@@ -75,11 +82,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.32,
         shadowRadius: 5.46,
-
-        elevation: 9,
-
-
-    
+        elevation: 9, 
     },
 
     text:{
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
         textAlign:'left',
         paddingLeft: 5,
         justifyContent: 'center',
-        textAlignVertical: 'center',
+        textAlignVertical: 'center',       
     },
 
     name:{
@@ -98,21 +101,19 @@ const styles = StyleSheet.create({
 
     change:{
         flexDirection: 'row'
-
     },
 
     image:{
         width: '15%',
-        height: '100%',
-       
+        height: '100%',      
         justifyContent: 'center',
         alignItems: 'center',
       },
       
       image_pic:{
         
-        width: '70%',
-        height: '70%',
+        width: '65%',
+        height: '65%',
       },
 
 
@@ -124,7 +125,12 @@ const styles = StyleSheet.create({
           alignItems: 'center',
           textAlignVertical: 'center',
           width: '40%',
-         // fontWeight: 'bold',
+         paddingRight: 15,
+      },
+
+      icon:{
+          textAlign:'left',
+          textAlignVertical:'center'
       }
 
 })

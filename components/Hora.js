@@ -20,7 +20,7 @@ const Hora = ({cripto}) => {
 		<View style={styles.detail}>
 			<Text style={styles.leftText}>
 				Variación: 
-					<Text style={[cripto.DISPLAY.USD.CHANGEPCTHOUR<0 ? styles.negative : styles.noNegative]}> {cripto.DISPLAY.USD.CHANGEPCTHOUR}%   </Text> 
+					<Text style={[cripto.DISPLAY.USD.CHANGEPCTHOUR<0 ? styles.negative : styles.noNegative]}> {cripto.DISPLAY.USD.CHANGEPCTHOUR}% </Text> 
 				 ({cripto.DISPLAY.USD.CHANGEHOUR})
 			</Text>
 		</View>
@@ -69,8 +69,8 @@ const Hora = ({cripto}) => {
 		<View style={styles.detail}>
 			<Text style={styles.leftText}>
 				Variación: 
-					<Text style={[cripto.DISPLAY.USD.CHANGEPCTHOUR<0 ? styles.negative : styles.noNegative]}> {cripto.DISPLAY.USD.CHANGEPCTHOUR}%</Text> 
-				({cripto.DISPLAY.USD.CHANGEHOUR})
+					<Text style={[cripto.DISPLAY.USD.CHANGEPCTHOUR<0 ? styles.negative : styles.noNegative]}> {cripto.DISPLAY.USD.CHANGEPCTHOUR}% </Text> 
+				 ({cripto.DISPLAY.USD.CHANGEHOUR})
 			</Text>
 		</View>
 

@@ -67,8 +67,7 @@ const Diario = ({cripto}) => {
 		<View style={styles.detail}>
 			<Text style={styles.leftText}>
 				Variación: 
-					<Text style={[cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? styles.negative : styles.noNegative]}> {cripto.DISPLAY.USD.CHANGEPCTDAY}% 
-					</Text> ({cripto.DISPLAY.USD.CHANGEDAY})
+					<Text style={[cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? styles.negative : styles.noNegative]}> {cripto.DISPLAY.USD.CHANGEPCTDAY}%</Text> ({cripto.DISPLAY.USD.CHANGEDAY})
 			</Text>
 		</View>
 
