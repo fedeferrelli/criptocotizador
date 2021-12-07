@@ -25,12 +25,9 @@ const Mostrar = ({criptomonedas, navigation, refresh, setRefresh, refreshing, se
     const onRefresh =() =>{
         setRefreshing(true)
         setRefresh(!refresh)
-       // setTimeout(function(){ setRefreshing(false); }, 800); 
-
-        
     }
 
-    if(criptomonedas.length>1)
+    if(criptomonedas.length>0)
 
     return(
 
@@ -54,7 +51,7 @@ const Mostrar = ({criptomonedas, navigation, refresh, setRefresh, refreshing, se
                     />    
                 }
                    
-                    keyExtractor={item => item.CoinInfo.Id}
+                    keyExtractor={item => item.id}
               
                     />
 

@@ -17,42 +17,41 @@ const FormatoLista = ({cripto, navigation}) => {
             <View style={styles.image}>
             <Image 
                 style = {styles.image_pic}
-                source = {{uri:`${cripto.image}`}}
+                source = {{uri:`http://www.cryptocompare.com${cripto.CoinInfo.ImageUrl}`}}
+                resizeMode='contain'
+
             />
             </View>
  
             <View style={styles.text}>
 
-            <View style={styles.name_rank}>
-            
-            <Text style={styles.name}>{cripto.name}</Text>
-            
+            <View>
+            <Text style={styles.name}>{cripto.CoinInfo.FullName}</Text>
             </View>
             
             
 
             <View style={styles.change}>
 
+
             <Text
-            style={cripto.price_change_percentage_24h<0 ? {color:'red', fontWeight:'bold',  textAlignVertical:'center'} : cripto.price_change_percentage_24h>0 ?  {color:'green', fontWeight:'bold',  textAlignVertical:'center'} : {fontWeight:'bold', textAlignVertical:'center'}}
-            >{Math.round(cripto.price_change_percentage_24h*100)/100}%</Text>
-            
+            style={cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? {color:'red', fontWeight:'bold',  textAlignVertical:'center'} : cripto.DISPLAY.USD.CHANGEPCTDAY>0 ?  {color:'green', fontWeight:'bold',  textAlignVertical:'center'} : {fontWeight:'bold', textAlignVertical:'center'}}
+            >{cripto.DISPLAY.USD.CHANGEPCTDAY}%</Text>
+
             <View style={styles.icon}>
                 <Icon
                 type='material-community'
-                name= {cripto.price_change_percentage_24h<0 ? 'chevron-double-down' : cripto.price_change_percentage_24h>0 ? 'chevron-double-up' : 'equal'}
-                color= {cripto.price_change_percentage_24h<0 ? 'red' : cripto.price_change_percentage_24h>0 ?  'green' : 'black'}
+                name= {cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? 'chevron-double-down' : cripto.DISPLAY.USD.CHANGEPCTDAY>0 ? 'chevron-double-up' : 'equal'}
+                color= {cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? 'red' : cripto.DISPLAY.USD.CHANGEPCTDAY>0 ?  'green' : 'black'}
                 />
             </View>
-                    
+         
             </View>
 
             </View>
 
-            <View style={styles.price_rank}>
-            <Text style={styles.price}>${Math.round(cripto.current_price*100)/100}</Text>
-            <Text style={styles.rank}>Rank: {cripto.market_cap_rank} </Text>
-            </View>
+            
+            <Text style={styles.price}>{cripto.DISPLAY.USD.PRICE}</Text>
             
   
         </View>
@@ -94,22 +93,10 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center',       
     },
 
-    name_rank:{
-        flexDirection: 'row',
-        
-    },  
-
-    rank:{
-        fontSize: 20,
-        color: 'grey',
-        textAlignVertical: 'bottom',
-    },
-
     name:{
         color: '#2C272E',
         fontSize: 20,
         fontWeight: 'bold',
-        textAlignVertical: 'bottom',
     },
 
     change:{
@@ -127,37 +114,19 @@ const styles = StyleSheet.create({
         
         width: '65%',
         height: '65%',
-        borderRadius: 20
       },
-
-      price_rank:{
-        flex:1,
-        justifyContent: 'center',
-        //alignItems: 'right',
-        textAlignVertical: 'center',
-        width: '40%',
-        paddingRight: 15,
-    },
 
 
       price:{
+          flex:1,
           fontSize: 19,
           textAlign: 'right',
           justifyContent: 'center',
           alignItems: 'center',
           textAlignVertical: 'center',
-          
-         },
-
-         rank:{
-            fontSize: 14,
-            textAlign: 'right',
-            justifyContent: 'center',
-            alignItems: 'center',
-            textAlignVertical: 'center',
-            fontStyle: 'italic',
-            color: 'grey'
-           },
+          width: '40%',
+         paddingRight: 15,
+      },
 
       icon:{
           textAlign:'left',

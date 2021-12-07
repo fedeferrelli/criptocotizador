@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet} from 'react-native';
+import { View, Text, Image, StyleSheet, ImageBackground} from 'react-native';
 
 
 
@@ -14,19 +14,20 @@ const Encabezado = ({cripto}) => {
 		 	<View style={styles.image}>
 				<Image 
 					style={styles.image_pic}
-					source = {{uri:`http://www.cryptocompare.com${cripto.CoinInfo.ImageUrl}`}}
+					source = {{uri:`${cripto.image}`}}
+					//resizeMode="contain"
 				/>		
 			</View>
 
 			<View style={styles.viewText}>
 
-				<Text style={styles.fullName}>{cripto.CoinInfo.FullName}</Text>
+				<Text style={styles.fullName}>{cripto.name}</Text>
 
-				<Text style = {styles.name}>{cripto.CoinInfo.Name}</Text>
+				<Text style = {styles.name}>{cripto.symbol}</Text>
 
-				<Text style = {styles.price}>{cripto.DISPLAY.USD.PRICE}</Text>
+				<Text style = {styles.price}>${Math.round(cripto.current_price*100)/100}</Text>
 
-				<View style={styles.detail}>
+				{/* <View style={styles.detail}>
 					<Text style={styles.leftText}>Lanzamiento: {cripto.CoinInfo.AssetLaunchDate}</Text>
 				</View>
 
@@ -38,7 +39,7 @@ const Encabezado = ({cripto}) => {
 
 				<View style={styles.detail}>
 					<Text style={styles.leftText}>Capitalización: {cripto.DISPLAY.USD.MKTCAP}</Text>
-				</View>
+				</View> */}
 
 			</View>
 
@@ -97,9 +98,10 @@ paddingBottom: 10
       },
       
     image_pic:{
-        
-		width: '95%',
-       	height: '95%',
+        width: '90%',
+       	height: '90%',
+		borderRadius:45, 
+		
     },
 
 	viewText:{

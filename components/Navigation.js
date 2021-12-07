@@ -26,6 +26,7 @@ function Navigation() {
             headerTitleStyle: {
               fontWeight: 'bold',
             },
+            
              }} />
 
 

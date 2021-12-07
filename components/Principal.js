@@ -1,6 +1,7 @@
 
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View, ToastAndroid, Alert } from 'react-native';
+import { StyleSheet, Text, View, ToastAndroid, TextInput, Button } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 import axios from 'axios';
 
@@ -16,6 +17,8 @@ const Principal = ({navigation}) => {
 
   const [refreshing, setRefreshing] = useState(false)
 
+  const [search, setSearch] = useState('')
+
   const horario= () =>{
     const d = new Date()
     const hora = d.getHours();
@@ -30,14 +33,14 @@ const Principal = ({navigation}) => {
 
     const consultarAPI = async () => {
        
-        const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
+        const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false';
         const resultado = await axios.get(url);
-        guardarCriptomonedas(resultado.data.Data);
+        guardarCriptomonedas(resultado.data);
         setRefreshing(false)
-
+     
 
         
-       if (horario){
+     /*   if (horario){
         ToastAndroid.showWithGravityAndOffset(
               `Actualizado a las ${horario()}`,
               ToastAndroid.SHORT,
@@ -46,35 +49,80 @@ const Principal = ({navigation}) => {
               50
             );
 
-        }
+        } */
       }
     consultarAPI();    
 }, [refresh])
 
 
+const onChangeText = (text) =>{
+  setSearch(text)
+  
+}
+
+/* const [searching, setSearching] = useState(false);
+
+const onSearching=()=>{
+  setSearching(!searching)
+  
+
+}
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        
+        <Icon
+                type='material-community'
+                name= 'magnify'
+                color= 'blue'
+                onPress={onSearching}
+                />
+      ),
+    });
+  }, []); */
+
   return (
-<>
-   
-   <Mostrar
-    criptomonedas={criptomonedas}
-    navigation = {navigation}
-    refresh={refresh}
-    setRefresh={setRefresh}
-    refreshing={refreshing}
-    setRefreshing={setRefreshing}/>
+    <>
+    
+    <TextInput
+    style={styles.input}
+    onChangeText={onChangeText}
+    placeholder="Buscar crypto"
+    /> 
+    
+    
+       <Mostrar
+        criptomonedas
+        ={criptomonedas.filter((cripto) => cripto.name.toLowerCase().includes(search.toLowerCase()) ||cripto.symbol.toLowerCase().includes(search.toLowerCase()))}
+        navigation = {navigation}
+        refresh={refresh}
+        setRefresh={setRefresh}
+        refreshing={refreshing}
+        setRefreshing={setRefreshing}/>
+    
+    </>
+      )
 
-</>
-  );
-
-};
+} ;
 
 export default Principal;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+  input: {
+    height: 40,
+    marginHorizontal: '5%',
+    marginTop:10,
+    borderBottomWidth: 1,
+    fontStyle:'italic'
   },
+
+  search:{
+    //position:'absolute',
+    top:-1,
+    width:50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: 'orange'
+  }
 });
