@@ -8,15 +8,15 @@ const App = () => {
 
   const [animated, setAnimated] = useState(false);
 
-/*   if (!animated)
+ if (!animated)
 
   return(
-    <Animacion
+  /*   <Animacion
     setAnimated={setAnimated}
     ></Animacion>
   )
-else */
-  return(
+else
+  return( */
     <Navigation/>
   )
 };

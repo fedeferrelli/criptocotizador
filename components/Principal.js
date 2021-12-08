@@ -40,7 +40,7 @@ const Principal = ({navigation}) => {
      
 
         
-     /*   if (horario){
+  /*      if (horario){
         ToastAndroid.showWithGravityAndOffset(
               `Actualizado a las ${horario()}`,
               ToastAndroid.SHORT,

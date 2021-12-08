@@ -6,6 +6,7 @@ import Encabezado from './Encabezado';
 import Diario from './Diario';
 import Hora from './Hora';
 import UltimaOperacion from './UltimaOperacion';
+import Grafico from '../Grafico';
 
 
 const Detail = ({navigation, route}) => {
@@ -36,7 +37,9 @@ const Detail = ({navigation, route}) => {
             cripto={cripto}/>
 
  */}
-            
+            <Grafico
+            cripto={cripto}
+            />
          </ScrollView> 
     );
 
@@ -58,7 +61,14 @@ const styles = StyleSheet.create({
   
 
       encabezado:{
-          textAlign: 'center',
+        textAlign: 'center',
+        marginTop: 250, 
+        width:'90%',
+        
+      },
+
+      Grafico:{
+        textAlign: 'center',
         marginTop: 250, 
         width:'90%',
         

@@ -9,7 +9,7 @@ const FormatoLista = ({cripto, navigation}) => {
         
     return(
 
-        <TouchableNativeFeedback 
+        <TouchableHighlight 
         onPress={()=>navigation.navigate('Detalle', {cripto})} >
             
         <View style={styles.view}>
@@ -35,7 +35,7 @@ const FormatoLista = ({cripto, navigation}) => {
 
             <Text
             style={cripto.price_change_percentage_24h<0 ? {color:'red', fontWeight:'bold',  textAlignVertical:'center'} : cripto.price_change_percentage_24h>0 ?  {color:'green', fontWeight:'bold',  textAlignVertical:'center'} : {fontWeight:'bold', textAlignVertical:'center'}}
-            >{Math.round(cripto.price_change_percentage_24h*100)/100}%</Text>
+            >{Math.round(cripto.price_change_percentage_24h*10)/10}%</Text>
             
             <View style={styles.icon}>
                 <Icon
@@ -57,7 +57,7 @@ const FormatoLista = ({cripto, navigation}) => {
   
         </View>
 
-        </TouchableNativeFeedback>
+        </TouchableHighlight>
     )
 
 

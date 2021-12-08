@@ -23,23 +23,23 @@ const Encabezado = ({cripto}) => {
 
 				<Text style={styles.fullName}>{cripto.name}</Text>
 
-				<Text style = {styles.name}>{cripto.symbol}</Text>
+				<Text style = {styles.name}>{cripto.symbol.toUpperCase()}</Text>
 
 				<Text style = {styles.price}>${Math.round(cripto.current_price*100)/100}</Text>
 
-				{/* <View style={styles.detail}>
-					<Text style={styles.leftText}>Lanzamiento: {cripto.CoinInfo.AssetLaunchDate}</Text>
+				 <View style={styles.detail}>
+					<Text style={styles.leftText}>Oferta: {cripto.circulating_supply}</Text>
 				</View>
 
 
 				<View style={styles.detail}>
-					<Text style={styles.leftText}>Oferta: {cripto.DISPLAY.USD.SUPPLY}</Text>
+					<Text style={styles.leftText}>Market Cap: ${cripto.market_cap} (nº {cripto.market_cap_rank})</Text>
 				</View>
 
 
 				<View style={styles.detail}>
-					<Text style={styles.leftText}>Capitalización: {cripto.DISPLAY.USD.MKTCAP}</Text>
-				</View> */}
+					<Text style={styles.leftText}>Precio Máximo: {cripto.ath} ({Math.round((cripto.ath/cripto.current_price-1)*1000)/10}%)</Text>
+				</View>
 
 			</View>
 
