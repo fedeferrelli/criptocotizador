@@ -1,11 +1,11 @@
 
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View, ToastAndroid, TextInput, Button } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { StyleSheet, ToastAndroid, TextInput } from 'react-native';
+
 
 import axios from 'axios';
 
-import Mostrar from './Mostrar';
+import Mostrar from '../components/Principal/Mostrar';
 
 
 
@@ -40,7 +40,7 @@ const Principal = ({navigation}) => {
      
 
         
-  /*      if (horario){
+       if (horario){
         ToastAndroid.showWithGravityAndOffset(
               `Actualizado a las ${horario()}`,
               ToastAndroid.SHORT,
@@ -49,7 +49,7 @@ const Principal = ({navigation}) => {
               50
             );
 
-        } */
+        }
       }
     consultarAPI();    
 }, [refresh])

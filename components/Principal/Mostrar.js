@@ -1,27 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {ScrollView, View, ActivityIndicator, StyleSheet, FlatList, RefreshControl} from 'react-native';
+import React from 'react';
+import { View, ActivityIndicator, StyleSheet, FlatList, RefreshControl} from 'react-native';
 import FormatoLista from './FormatoLista';
 
 const Mostrar = ({criptomonedas, navigation, refresh, setRefresh, refreshing, setRefreshing}) => {
 
-  /*  const [newData, setNewData] = useState([])
-
-   useEffect(() => {
-
-    criptomonedas.map(cripto=>{
-        console.log(cripto)
-        
-       if (cripto.hasOwnProperty('DISPLAY')){
-            newData.push(cripto)
-           // setNewData([...newData, cripto])
-        }
-
-    })
-    //setNewData([])
-   }, [criptomonedas]) */
-
-
-    
+     
     const onRefresh =() =>{
         setRefreshing(true)
         setRefresh(!refresh)

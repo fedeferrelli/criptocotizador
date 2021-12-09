@@ -11,12 +11,12 @@ const App = () => {
  if (!animated)
 
   return(
-  /*   <Animacion
+    <Animacion
     setAnimated={setAnimated}
     ></Animacion>
   )
 else
-  return( */
+  return( 
     <Navigation/>
   )
 };

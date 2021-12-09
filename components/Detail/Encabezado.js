@@ -1,11 +1,25 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ImageBackground} from 'react-native';
+import { View, Text, Image, StyleSheet} from 'react-native';
 
 
 
 const Encabezado = ({cripto}) => {
-    
-	
+
+	const re_pricing = (price) =>{
+		if (price<10){
+			return Math.round(price*1000)/1000
+		}
+		else if (price < 100){
+			
+			return Math.round(price*100)/100
+		}
+		else if (price < 1000){
+			
+			return Math.round(price*10)/10
+		}
+		else return Math.round(price)
+	};
+    	
 	return(
 
 		<View style = {styles.encabezado}>
@@ -15,7 +29,6 @@ const Encabezado = ({cripto}) => {
 				<Image 
 					style={styles.image_pic}
 					source = {{uri:`${cripto.image}`}}
-					//resizeMode="contain"
 				/>		
 			</View>
 
@@ -25,15 +38,16 @@ const Encabezado = ({cripto}) => {
 
 				<Text style = {styles.name}>{cripto.symbol.toUpperCase()}</Text>
 
-				<Text style = {styles.price}>${Math.round(cripto.current_price*100)/100}</Text>
+				<Text style = {styles.price}>${re_pricing(cripto.current_price)}</Text>
 
 				 <View style={styles.detail}>
-					<Text style={styles.leftText}>Oferta: {cripto.circulating_supply}</Text>
+					<Text style={styles.leftText}>Oferta: {Math.round(cripto.circulating_supply/100000)/10} millones</Text>
 				</View>
 
 
 				<View style={styles.detail}>
-					<Text style={styles.leftText}>Market Cap: ${cripto.market_cap} (nº {cripto.market_cap_rank})</Text>
+					<Text style={styles.leftText}>Market Cap: ${Math.round(cripto.market_cap/100000000
+						)/10} billons (nº {cripto.market_cap_rank})</Text>
 				</View>
 
 

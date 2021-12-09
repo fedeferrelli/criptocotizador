@@ -4,7 +4,7 @@
     "slug": "cripto",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon_final.png",
+    "icon": "./assets/adaptive-icon.png",
     "updates": {
       "fallbackToCacheTimeout": 0
     },

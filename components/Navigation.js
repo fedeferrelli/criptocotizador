@@ -4,8 +4,8 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Principal from './Principal';
-import Detail from './Detail';
+import Principal from '../screens/Principal';
+import Detail from '../screens/Detail';
 
 
 const Stack = createNativeStackNavigator();

@@ -1,12 +1,9 @@
 import React from 'react';
 
-import { ScrollView, Text, StyleSheet, RefreshControl } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 
-import Encabezado from './Encabezado';
-import Diario from './Diario';
-import Hora from './Hora';
-import UltimaOperacion from './UltimaOperacion';
-import Grafico from '../Grafico';
+import Encabezado from '../components/Detail/Encabezado';
+import Grafico from '../components/Detail/Grafico';
 
 
 const Detail = ({navigation, route}) => {
@@ -23,20 +20,7 @@ const Detail = ({navigation, route}) => {
             <Encabezado
             style={styles.encabezado}
             cripto={cripto}/>
-{/* 
-            <Diario
-            style={styles.diario}
-            cripto={cripto}/>
 
-            <Hora
-            style={styles.hora}
-            cripto={cripto}/>
-
-            <UltimaOperacion
-            style={styles.operacion}
-            cripto={cripto}/>
-
- */}
             <Grafico
             cripto={cripto}
             />

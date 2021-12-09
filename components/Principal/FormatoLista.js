@@ -1,10 +1,24 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableNativeFeedback, TouchableHighlight} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableNativeFeedback} from 'react-native';
 import { Icon } from 'react-native-elements'
 
 
 const FormatoLista = ({cripto, navigation}) => {
 
+	const re_pricing = (price) =>{
+		if (price<10){
+			return Math.round(price*1000)/1000
+		}
+		else if (price < 100){
+			
+			return Math.round(price*100)/100
+		}
+		else if (price < 1000){
+			
+			return Math.round(price*10)/10
+		}
+		else return Math.round(price)
+	};
 
         
     return(
@@ -17,41 +31,42 @@ const FormatoLista = ({cripto, navigation}) => {
             <View style={styles.image}>
             <Image 
                 style = {styles.image_pic}
-                source = {{uri:`http://www.cryptocompare.com${cripto.CoinInfo.ImageUrl}`}}
-                resizeMode='contain'
-
+                source = {{uri:`${cripto.image}`}}
             />
             </View>
  
             <View style={styles.text}>
 
-            <View>
-            <Text style={styles.name}>{cripto.CoinInfo.FullName}</Text>
+            <View style={styles.name_rank}>
+            
+            <Text style={styles.name}>{cripto.name}</Text>
+            
             </View>
             
             
 
             <View style={styles.change}>
 
-
             <Text
-            style={cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? {color:'red', fontWeight:'bold',  textAlignVertical:'center'} : cripto.DISPLAY.USD.CHANGEPCTDAY>0 ?  {color:'green', fontWeight:'bold',  textAlignVertical:'center'} : {fontWeight:'bold', textAlignVertical:'center'}}
-            >{cripto.DISPLAY.USD.CHANGEPCTDAY}%</Text>
-
+            style={cripto.price_change_percentage_24h<0 ? {color:'red', fontWeight:'bold',  textAlignVertical:'center'} : cripto.price_change_percentage_24h>0 ?  {color:'green', fontWeight:'bold',  textAlignVertical:'center'} : {fontWeight:'bold', textAlignVertical:'center'}}
+            >{Math.round(cripto.price_change_percentage_24h*10)/10}%</Text>
+            
             <View style={styles.icon}>
                 <Icon
                 type='material-community'
-                name= {cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? 'chevron-double-down' : cripto.DISPLAY.USD.CHANGEPCTDAY>0 ? 'chevron-double-up' : 'equal'}
-                color= {cripto.DISPLAY.USD.CHANGEPCTDAY<0 ? 'red' : cripto.DISPLAY.USD.CHANGEPCTDAY>0 ?  'green' : 'black'}
+                name= {cripto.price_change_percentage_24h<0 ? 'chevron-double-down' : cripto.price_change_percentage_24h>0 ? 'chevron-double-up' : 'equal'}
+                color= {cripto.price_change_percentage_24h<0 ? 'red' : cripto.price_change_percentage_24h>0 ?  'green' : 'black'}
                 />
             </View>
-         
+                    
             </View>
 
             </View>
 
-            
-            <Text style={styles.price}>{cripto.DISPLAY.USD.PRICE}</Text>
+            <View style={styles.price_rank}>
+            <Text style={styles.price}>${re_pricing(cripto.current_price)}</Text>
+            <Text style={styles.rank}>Rank: {cripto.market_cap_rank} </Text>
+            </View>
             
   
         </View>
@@ -93,10 +108,22 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center',       
     },
 
+    name_rank:{
+        flexDirection: 'row',
+        
+    },  
+
+    rank:{
+        fontSize: 20,
+        color: 'grey',
+        textAlignVertical: 'bottom',
+    },
+
     name:{
         color: '#2C272E',
         fontSize: 20,
         fontWeight: 'bold',
+        textAlignVertical: 'bottom',
     },
 
     change:{
@@ -114,19 +141,37 @@ const styles = StyleSheet.create({
         
         width: '65%',
         height: '65%',
+        borderRadius: 20
       },
+
+      price_rank:{
+        flex:1,
+        justifyContent: 'center',
+        //alignItems: 'right',
+        textAlignVertical: 'center',
+        width: '40%',
+        paddingRight: 15,
+    },
 
 
       price:{
-          flex:1,
           fontSize: 19,
           textAlign: 'right',
           justifyContent: 'center',
           alignItems: 'center',
           textAlignVertical: 'center',
-          width: '40%',
-         paddingRight: 15,
-      },
+          
+         },
+
+         rank:{
+            fontSize: 14,
+            textAlign: 'right',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlignVertical: 'center',
+            fontStyle: 'italic',
+            color: 'grey'
+           },
 
       icon:{
           textAlign:'left',

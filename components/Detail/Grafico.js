@@ -44,12 +44,7 @@ import axios from 'axios';
 
     const periodoText = period===1 ? 'diario' : period===7 ? 'semanal' : period===30 ? 'mensual' : 'anual';
 
-   // console.log(minimoPeriodo)
-    console.log(inicioPeriodo)
-    console.log(finPeriodo)
-   // console.log(maximoPeriodo)
-    console.log(variacionPeriodo)
-    console.log(variacionAnualizada)
+   
     
 
     const chartConfig = {
