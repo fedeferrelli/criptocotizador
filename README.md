@@ -1,8 +1,8 @@
 # Criptocotizador
 
-Esta aplicación creada con React Native permite consultar las principales caracterisitica de las primera 100 criptomonedas (de acuerdo a su capitalización de mercado).
+Esta aplicación creada con React Native permite consultar las principales caracterísiticas de las primeras 100 criptomonedas (de acuerdo a su capitalización de mercado).
 
-Las caracteristicas mencionadas son:
+Las características mencionadas son:
 
 * La cotización en dólares
 * El ranking por capitalización de mercado
